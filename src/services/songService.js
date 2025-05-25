@@ -11,6 +11,9 @@ const mockSongs = [
 export const getSongs = async () => {
   try {
     const response = await axios.get(API_URL);
+    response.data.forEach(datos => {
+      console.log(datos.duration);
+    });
     return response.data;
   } catch (error) {
     return mockSongs;
@@ -20,6 +23,7 @@ export const getSongs = async () => {
 export const getSongById = async (id) => {
   try {
     const response = await axios.get(`${API_URL}/${id}`);
+    console.log(response.data.duration);
     return response.data;
   } catch (error) {
     // Busca en los datos mock

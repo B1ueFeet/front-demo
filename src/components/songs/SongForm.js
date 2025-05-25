@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
-// Convierte ISO 8601 duration a segundos
 function isoToSeconds(iso) {
   if (!iso) return 0;
-  const match = iso.match(/PT(\d+(\.\d+)?)S/);
-  if (match) {
-    const seconds = Number(match[1]);
-    // Si es menor a 1 segundo, lo consideramos vacío
-    if (seconds < 1) return '';
-    return Math.floor(seconds);
-  }
-  return '';
+
+  const regex = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?/;
+  const match = iso.match(regex);
+  console.log('isoToSeconds', iso, match);
+
+  if (!match) return 0;
+
+  const hours = parseFloat(match[1]) || 0;
+  const minutes = parseFloat(match[2]) || 0;
+  const seconds = parseFloat(match[3]) || 0;
+
+  return Math.floor(hours * 3600 + minutes * 60 + seconds);
 }
+
 
 // Convierte segundos a mm:ss
 function secondsToMMSS(seconds) {

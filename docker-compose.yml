@@ -31,6 +31,14 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/musicdb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
+  
+  react-app:
+    image: b1uefeet/frontend-music:latest
+    ports:
+      - "8080:80"
+    container_name: frontend-react-container
+    environment:
+      REACT_APP_BASE_URL: http://localhost:9090/API/v1.0/demo
  
 volumes:
  
