@@ -1,0 +1,42 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+.env
+.env.*.local
+.env.local
+
+# Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# System
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+*.lcov
+
+# Misc
+*.log
+*.tgz
+.parcel-cache/
+.cache/
+.eslintcache
+
+# Optional: TypeScript
+*.tsbuildinfo
+
+# Optional: macOS/Linux files
+*.swp
+*.lock
+
+# Optional: Local build outputs
+out/
