@@ -5,7 +5,8 @@ import * as artistService from '../services/artistService';
 
 const ArtistsPage = () => {
   const [artists, setArtists] = useState([]);
-  const [selectedArtist, setSelectedArtist] = useState(null);
+  const [editingArtist, setEditingArtist] = useState(null);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const fetchArtists = async () => {
@@ -15,19 +16,16 @@ const ArtistsPage = () => {
     fetchArtists();
   }, []);
 
-  const handleArtistSelect = (artist) => {
-    setSelectedArtist(artist);
-  };
-
   const handleArtistSave = async (artist) => {
     if (artist.id) {
-      await artistService.updateArtist(artist);
+      await artistService.updateArtist(artist.id, artist);
     } else {
       await artistService.createArtist(artist);
     }
     const data = await artistService.getArtists();
     setArtists(data);
-    setSelectedArtist(null);
+    setEditingArtist(null);
+    setShowForm(false);
   };
 
   const handleArtistDelete = async (id) => {
@@ -36,11 +34,33 @@ const ArtistsPage = () => {
     setArtists(data);
   };
 
+  const handleEdit = (artist) => {
+    setEditingArtist(artist);
+    setShowForm(true);
+  };
+
+  const handleAdd = () => {
+    setEditingArtist(null);
+    setShowForm(true);
+  };
+
+  const handleCancel = () => {
+    setEditingArtist(null);
+    setShowForm(false);
+  };
+
   return (
     <div>
       <h1>Artists</h1>
-      <ArtistForm artist={selectedArtist} onSave={handleArtistSave} />
-      <ArtistList artists={artists} onSelect={handleArtistSelect} onDelete={handleArtistDelete} />
+      <button className="btn-primary" onClick={handleAdd}>Agregar artista</button>
+      <ArtistList artists={artists} onEdit={handleEdit} onDelete={handleArtistDelete} />
+      {showForm && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <ArtistForm artist={editingArtist} onSave={handleArtistSave} onCancel={handleCancel} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

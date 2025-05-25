@@ -10,19 +10,13 @@ function App() {
     <Router>
       <div className="container">
         {/* Menú de navegación */}
-        <nav className="navbar navbar-expand navbar-light bg-light mb-4">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Inicio</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/artists">Artistas</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/songs">Canciones</Link>
-            </li>
-          </ul>
-        </nav>
+              <nav className="main-navbar">
+        <ul>
+          <li><Link to="/" className="nav-link">Inicio</Link></li>
+          <li><Link to="/artists" className="nav-link">Artistas</Link></li>
+          <li><Link to="/songs" className="nav-link">Canciones</Link></li>
+        </ul>
+      </nav>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/artists" component={ArtistsPage} />

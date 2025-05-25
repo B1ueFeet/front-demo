@@ -22,8 +22,9 @@ const ArtistForm = ({ artist, onSave, onCancel }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form className="form-card" onSubmit={handleSubmit}>
+      <h2 style={{ marginBottom: 20 }}>{artist && artist.id ? 'Editar Artista' : 'Agregar Artista'}</h2>
+      <div className="form-group">
         <label>Name:</label>
         <input
           type="text"
@@ -32,7 +33,7 @@ const ArtistForm = ({ artist, onSave, onCancel }) => {
           required
         />
       </div>
-      <div>
+      <div className="form-group">
         <label>Nationality:</label>
         <input
           type="text"
@@ -41,8 +42,10 @@ const ArtistForm = ({ artist, onSave, onCancel }) => {
           required
         />
       </div>
-      <button type="submit">Save</button>
-      <button type="button" onClick={onCancel}>Cancel</button>
+      <div className="form-actions">
+        <button type="submit" className="btn-primary">Guardar</button>
+        <button type="button" className="btn-secondary" onClick={onCancel}>Cancelar</button>
+      </div>
     </form>
   );
 };

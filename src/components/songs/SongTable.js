@@ -1,33 +1,32 @@
 import React from 'react';
 
-const SongTable = ({ songs, onEdit, onDelete }) => {
-  return (
-    <table className="table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Duration</th>
-          <th>Artist ID</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {songs.map(song => (
+const SongTable = ({ songs, onEdit, onDelete, artists }) => (
+  <table className="table entity-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {songs.map(song => {
+        const artist = (artists || []).find(a => a.id === Number(song.artistId));
+        return (
           <tr key={song.id}>
             <td>{song.id}</td>
             <td>{song.title}</td>
-            <td>{song.duration}</td>
-            <td>{song.artistId}</td>
+            <td>{artist ? artist.name : ''}</td>
             <td>
-              <button onClick={() => onEdit(song)}>Edit</button>
-              <button onClick={() => onDelete(song.id)}>Delete</button>
+              <button className="btn-primary" onClick={() => onEdit(song)}>Edit</button>
+              <button className="btn-secondary" onClick={() => onDelete(song.id)}>Delete</button>
             </td>
           </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-};
+        );
+      })}
+    </tbody>
+  </table>
+);
 
 export default SongTable;

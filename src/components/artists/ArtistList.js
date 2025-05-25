@@ -2,22 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { getArtists } from '../../services/artistService';
 import ArtistTable from './ArtistTable';
 
-const ArtistList = () => {
-  const [artists, setArtists] = useState([]);
-
-  useEffect(() => {
-    const fetchArtists = async () => {
-      const data = await getArtists();
-      setArtists(data);
-    };
-
-    fetchArtists();
-  }, []);
-
+const ArtistList = ({ artists, onEdit, onDelete }) => {
   return (
     <div>
       <h2>Artist List</h2>
-      <ArtistTable artists={artists} />
+      <ArtistTable artists={artists} onEdit={onEdit} onDelete={onDelete} />
     </div>
   );
 };

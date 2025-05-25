@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/songs';
+const API_URL =  process.env.REACT_APP_BASE_URL + '/songs';
 
 // Datos mock para desarrollo
 const mockSongs = [
-  { id: 1, title: 'Canción 1', artist: 'Artista 1', genre: 'Rock' },
-  { id: 2, title: 'Canción 2', artist: 'Artista 2', genre: 'Pop' },
+  { id: 1, title: 'Canción 1', artist: 'Artista 1' },
+  { id: 2, title: 'Canción 2', artist: 'Artista 2' },
 ];
 
 export const getSongs = async () => {
@@ -13,7 +13,6 @@ export const getSongs = async () => {
     const response = await axios.get(API_URL);
     return response.data;
   } catch (error) {
-    // Retorna datos mock si falla la petición
     return mockSongs;
   }
 };

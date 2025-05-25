@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/artists';
+const API_URL = process.env.REACT_APP_BASE_URL + '/artists';
+console.log('API_URL:', process.env.REACT_APP_BASE_URL);
 
 // Datos mock para desarrollo
 const mockArtists = [

@@ -1,3 +1,5 @@
+/* src/App.css */
+
 body {
   background: #f7f7f7;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -6,7 +8,7 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 40px auto;
   background: #fff;
   border-radius: 10px;
@@ -15,46 +17,152 @@ body {
 }
 
 h1, h2 {
-  color: #333;
+  color: #222;
+  text-align: center;
+}
+
+.form-card {
+  background: #fafbfc;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 32px 24px;
   margin-bottom: 24px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-button, input, select {
-  font-family: inherit;
-  font-size: 1rem;
-  padding: 8px 12px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin: 4px 0;
+.form-group {
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
 }
 
-button {
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #444;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.btn-primary {
   background: #1976d2;
   color: #fff;
   border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
   cursor: pointer;
+  font-weight: 500;
   transition: background 0.2s;
 }
 
-button:hover {
+.btn-primary:hover {
   background: #1565c0;
 }
 
-form {
-  margin-bottom: 24px;
+.btn-secondary {
+  background: #eee;
+  color: #333;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.btn-secondary:hover {
+  background: #ccc;
 }
 
-li {
-  background: #f1f1f1;
-  margin-bottom: 10px;
-  padding: 12px 16px;
-  border-radius: 6px;
+.entity-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: 24px;
+}
+
+.entity-table th, .entity-table td {
+  padding: 12px 10px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.entity-table th {
+  background: #f1f5fa;
+  color: #333;
+  font-weight: 600;
+}
+
+.entity-table tr {
+  border-radius: 8px;
+}
+
+.entity-table tr:last-child td {
+  border-bottom: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  min-width: 320px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.main-navbar {
+  background: #1976d2;
+  padding: 0;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.main-navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 24px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  height: 56px;
+}
+
+.main-navbar li {
+  display: flex;
+  align-items: center;
+  height: 56px;
+}
+
+.main-navbar .nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05rem;
+  padding: 8px 18px;
+  border-radius: 5px;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.main-navbar .nav-link:hover,
+.main-navbar .nav-link.active {
+  background: #1565c0;
+  color: #fff;
 }

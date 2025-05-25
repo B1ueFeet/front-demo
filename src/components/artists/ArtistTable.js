@@ -2,7 +2,7 @@ import React from 'react';
 
 const ArtistTable = ({ artists, onEdit, onDelete }) => {
   return (
-    <table className="table">
+    <table className="table entity-table">
       <thead>
         <tr>
           <th>ID</th>
@@ -18,8 +18,8 @@ const ArtistTable = ({ artists, onEdit, onDelete }) => {
             <td>{artist.name}</td>
             <td>{artist.nationality}</td>
             <td>
-              <button onClick={() => onEdit(artist)}>Edit</button>
-              <button onClick={() => onDelete(artist.id)}>Delete</button>
+              <button className="btn-primary" onClick={() => onEdit(artist)}>Edit</button>
+              <button className="btn-secondary" onClick={() => onDelete(artist.id)}>Delete</button>
             </td>
           </tr>
         ))}
